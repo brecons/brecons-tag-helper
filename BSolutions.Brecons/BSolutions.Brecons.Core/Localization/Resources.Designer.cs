@@ -22,7 +22,7 @@ namespace BSolutions.Brecons.Core.Localization {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace BSolutions.Brecons.Core.Localization {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BSolutions.Brecons.Core.Localization.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace BSolutions.Brecons.Core.Localization {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace BSolutions.Brecons.Core.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
-        internal static string CloseIconText {
+        public static string CloseIconText {
             get {
                 return ResourceManager.GetString("CloseIconText", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace BSolutions.Brecons.Core.Localization {
         /// <summary>
         ///   Looks up a localized string similar to complete.
         /// </summary>
-        internal static string Complete {
+        public static string Complete {
             get {
                 return ResourceManager.GetString("Complete", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace BSolutions.Brecons.Core.Localization {
         /// <summary>
         ///   Looks up a localized string similar to current.
         /// </summary>
-        internal static string Current {
+        public static string Current {
             get {
                 return ResourceManager.GetString("Current", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace BSolutions.Brecons.Core.Localization {
         /// <summary>
         ///   Looks up a localized string similar to next.
         /// </summary>
-        internal static string Next {
+        public static string Next {
             get {
                 return ResourceManager.GetString("Next", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace BSolutions.Brecons.Core.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Pagination Menu.
         /// </summary>
-        internal static string PaginationMenu {
+        public static string PaginationMenu {
             get {
                 return ResourceManager.GetString("PaginationMenu", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace BSolutions.Brecons.Core.Localization {
         /// <summary>
         ///   Looks up a localized string similar to previous.
         /// </summary>
-        internal static string Previous {
+        public static string Previous {
             get {
                 return ResourceManager.GetString("Previous", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace BSolutions.Brecons.Core.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Toggle Navigation.
         /// </summary>
-        internal static string ToggleNavigation {
+        public static string ToggleNavigation {
             get {
                 return ResourceManager.GetString("ToggleNavigation", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace BSolutions.Brecons.Core.Localization {
         /// <summary>
         ///   Looks up a localized string similar to error.
         /// </summary>
-        internal static string ValidationError {
+        public static string ValidationError {
             get {
                 return ResourceManager.GetString("ValidationError", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace BSolutions.Brecons.Core.Localization {
         /// <summary>
         ///   Looks up a localized string similar to success.
         /// </summary>
-        internal static string ValidationSuccess {
+        public static string ValidationSuccess {
             get {
                 return ResourceManager.GetString("ValidationSuccess", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace BSolutions.Brecons.Core.Localization {
         /// <summary>
         ///   Looks up a localized string similar to warning.
         /// </summary>
-        internal static string ValidationWarning {
+        public static string ValidationWarning {
             get {
                 return ResourceManager.GetString("ValidationWarning", resourceCulture);
             }

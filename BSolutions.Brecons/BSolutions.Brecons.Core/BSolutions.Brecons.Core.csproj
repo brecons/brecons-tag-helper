@@ -9,13 +9,16 @@
     <PackageIconUrl>http://nuget.bremus-solutions.de/package-logo.png</PackageIconUrl>
     <Copyright>Copyright © Bremus Solutions</Copyright>
     <PackageTags>aspnetcore aspnetcoremvc taghelper taghelpers tag helpers brecons</PackageTags>
-    <NeutralLanguage>English</NeutralLanguage>
+    <NeutralLanguage>en</NeutralLanguage>
     <Authors>Timm Bremus</Authors>
     <Company>Bremus Solutions</Company>
     <Product>Brecons - Tag Helper Core Library</Product>
     <Description>The core library for Brecons Tag Helper - Components and Controls for ASP.NET Core.</Description>
     <RepositoryUrl>https://github.com/brecons/brecons-tag-helper</RepositoryUrl>
     <PackageReleaseNotes>Initial release of the library.</PackageReleaseNotes>
+    <AssemblyVersion>2.0.2.0</AssemblyVersion>
+    <FileVersion>2.0.2.0</FileVersion>
+    <Version>2.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,7 +35,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Localization\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
