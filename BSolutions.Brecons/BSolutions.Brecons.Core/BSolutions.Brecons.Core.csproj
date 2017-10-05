@@ -8,8 +8,8 @@
     <PackageProjectUrl>https://www.brecons.net</PackageProjectUrl>
     <PackageIconUrl>http://nuget.bremus-solutions.de/package-logo.png</PackageIconUrl>
     <Copyright>Copyright © Bremus Solutions</Copyright>
-    <PackageTags>aspnetcore aspnetcoremvc taghelper taghelpers tag helpers brecons</PackageTags>
-    <NeutralLanguage>en</NeutralLanguage>
+    <PackageTags>aspnetcore aspnetcoremvc taghelper taghelpers tag helpers bootstrap metronic brecons</PackageTags>
+    <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Timm Bremus</Authors>
     <Company>Bremus Solutions</Company>
     <Product>Brecons - Tag Helper Core Library</Product>
