@@ -22,13 +22,21 @@
 //      under the License.
 // </license>
 //-----------------------------------------------------------------------
+using BSolutions.Brecons.Core.Attributes.Enumerations;
+
 namespace BSolutions.Brecons.Core.Enumerations
 {
     public enum VerticalAlignment
     {
         Default,
+
+        [EnumInfo("top")]
         Top,
+
+        [EnumInfo("middle")]
         Middle,
+
+        [EnumInfo("bottom")]
         Bottom
     }
 }
