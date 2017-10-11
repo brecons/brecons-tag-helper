@@ -362,14 +362,5 @@ namespace BSolutions.Brecons.Core.Extensions
             output.PreElement.AppendHtml(startTag);
             output.PostElement.PrependHtml(endTag);
         }
-
-        public static void NoLicenseRendering(this TagHelperOutput output)
-        {
-            output.TagName = "div";
-            output.AddCssClass("alert alert-danger");
-            output.Attributes.Add("role", "alert");
-            output.Content.SetContent("For this Brecons Tag Helper Library no valid license could be found.");
-            output.PreContent.AppendHtml("<strong>No License!</strong> ");
-        }
     }
 }
