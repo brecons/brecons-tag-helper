@@ -44,24 +44,38 @@ namespace BSolutions.Brecons.Core.Extensions
 
             if (modelExpression != null)
             {
+                // Name
+                tagHelper.HandleName(modelExpression);
+
                 // Required
-                tagHelper.HandleRequired(modelExpression.Metadata);
+                tagHelper.HandleRequired(modelExpression);
 
                 // Label and Help
-                tagHelper.HandleInformation(modelExpression.Metadata);
+                tagHelper.HandleInformation(modelExpression);
             }
+        }
+
+        /// <summary>
+        /// Handles the name of the control from the binded model.
+        /// </summary>
+        /// <param name="tagHelper">The tag helper.</param>
+        /// <param name="modelExpression">The tag helper model expression.</param>
+        private static void HandleName(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
+        {
+            var name = modelExpression.Name;
+            tagHelper.Name = tagHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
         }
 
         /// <summary>
         /// Handles the required field information of the control getting from the binded model.
         /// </summary>
         /// <param name="tagHelper">The tag helper.</param>
-        /// <param name="metadata">The tag helper metadata.</param>
-        private static void HandleRequired(this FormTagHelperBase tagHelper, ModelMetadata metadata)
+        /// <param name="modelExpression">The tag helper model expression.</param>
+        private static void HandleRequired(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
         {
-            if (metadata != null)
+            if (modelExpression.Metadata != null)
             {
-                var property = metadata.ContainerType.GetProperty(metadata.PropertyName);
+                var property = modelExpression.Metadata.ContainerType.GetProperty(modelExpression.Metadata.PropertyName);
 
                 // RequiredAttribute
                 if (property.IsDefined(typeof(RequiredAttribute)))
@@ -75,13 +89,13 @@ namespace BSolutions.Brecons.Core.Extensions
         /// Handles the information of the control getting from the binded model (e.g. label und help).
         /// </summary>
         /// <param name="tagHelper">The tag helper.</param>
-        /// <param name="metadata">The tag helper metadata.</param>
-        private static void HandleInformation(this FormTagHelperBase tagHelper, ModelMetadata metadata)
+        /// <param name="modelExpression">The tag helper model expression.</param>
+        private static void HandleInformation(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
         {
-            if (metadata != null)
+            if (modelExpression.Metadata != null)
             {
                 // Localized Property Info
-                var pi = metadata.ContainerType.GetProperty(metadata.PropertyName).GetLocalization();
+                var pi = modelExpression.Metadata.ContainerType.GetProperty(modelExpression.Metadata.PropertyName).GetLocalization();
 
                 if (pi != null)
                 {
