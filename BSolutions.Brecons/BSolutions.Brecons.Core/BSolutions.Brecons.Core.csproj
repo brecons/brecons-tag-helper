@@ -18,7 +18,7 @@
     <PackageReleaseNotes>Initial release of the library.</PackageReleaseNotes>
     <AssemblyVersion>2.1.0.1</AssemblyVersion>
     <FileVersion>2.1.0.1</FileVersion>
-    <Version>2.1.0-alpha3</Version>
+    <Version>2.1.0-alpha6</Version>
   </PropertyGroup>
 
   <ItemGroup>
