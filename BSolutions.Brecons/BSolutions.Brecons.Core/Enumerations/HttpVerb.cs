@@ -28,16 +28,16 @@ namespace BSolutions.Brecons.Core.Enumerations
 
     public enum HttpVerb
     {
-        [EnumInfo("get")]
+        [EnumInfo("GET")]
         Get,
 
-        [EnumInfo("Post")]
+        [EnumInfo("POST")]
         Post,
 
-        [EnumInfo("Put")]
+        [EnumInfo("PUT")]
         Put,
 
-        [EnumInfo("Delete")]
+        [EnumInfo("DELETE")]
         Delete
     }
 }
