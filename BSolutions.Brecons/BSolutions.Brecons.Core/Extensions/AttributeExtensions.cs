@@ -36,7 +36,7 @@ namespace BSolutions.Brecons.Core.Extensions
         {
             if (property != null)
             {
-                // MetronicDisplayAttribute
+                // BreconsDisplayAttribute
                 if (property.IsDefined(typeof(BreconsDisplayAttribute)))
                 {
                     BreconsDisplayAttribute attribute = property.GetCustomAttribute<BreconsDisplayAttribute>();
