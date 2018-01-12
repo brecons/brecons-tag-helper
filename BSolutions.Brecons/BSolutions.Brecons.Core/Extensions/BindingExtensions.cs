@@ -25,7 +25,6 @@
 namespace BSolutions.Brecons.Core.Extensions
 {
     using BSolutions.Brecons.Core.Controls;
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using Microsoft.AspNetCore.Razor.TagHelpers;
     using System.ComponentModel.DataAnnotations;
@@ -40,7 +39,7 @@ namespace BSolutions.Brecons.Core.Extensions
         /// <param name="tagHelper">The tag helper.</param>
         public static void BindProperty(this FormTagHelperBase tagHelper, TagHelperContext context)
         {
-            var modelExpression = context.AllAttributes.FirstOrDefault(a => a.Name == "asp-for")?.Value as ModelExpression;
+            var modelExpression = tagHelper.GetModelExpression(context);
 
             if (modelExpression != null)
             {
@@ -53,6 +52,17 @@ namespace BSolutions.Brecons.Core.Extensions
                 // Label and Help
                 tagHelper.HandleInformation(modelExpression);
             }
+        }
+
+        /// <summary>
+        /// Gets the model expression of a tag helper.
+        /// </summary>
+        /// <param name="tagHelper">The tag helper.</param>
+        /// <param name="context">The tag helper context.</param>
+        /// <returns>Returns the model expression of a tag helper.</returns>
+        public static ModelExpression GetModelExpression(this FormTagHelperBase tagHelper, TagHelperContext context)
+        {
+            return context.AllAttributes.FirstOrDefault(a => a.Name == "asp-for")?.Value as ModelExpression;
         }
 
         /// <summary>
