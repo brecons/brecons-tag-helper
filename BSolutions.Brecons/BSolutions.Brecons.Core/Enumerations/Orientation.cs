@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="HttpVerb.cs" company="Bremus Solutions">
+// <copyright file="Orientation.cs" company="Bremus Solutions">
 //     Copyright (c) Bremus Solutions. All rights reserved.
 // </copyright>
 // <author>Timm Bremus</author>
@@ -24,20 +24,9 @@
 //-----------------------------------------------------------------------
 namespace BSolutions.Brecons.Core.Enumerations
 {
-    using BSolutions.Brecons.Core.Attributes.Enumerations;
-
-    public enum HttpVerb
+    public enum Orientation
     {
-        [EnumInfo("GET")]
-        Get,
-
-        [EnumInfo("POST")]
-        Post,
-
-        [EnumInfo("PUT")]
-        Put,
-
-        [EnumInfo("DELETE")]
-        Delete
+        Horizontal,
+        Vertical
     }
 }

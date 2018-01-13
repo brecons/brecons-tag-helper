@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ValidationType.cs" company="Bremus Solutions">
+// <copyright file="Overflow.cs" company="Bremus Solutions">
 //     Copyright (c) Bremus Solutions. All rights reserved.
 // </copyright>
 // <author>Timm Bremus</author>
@@ -24,10 +24,23 @@
 //-----------------------------------------------------------------------
 namespace BSolutions.Brecons.Core.Enumerations
 {
-    public enum ValidationType
+    using BSolutions.Brecons.Core.Attributes.Enumerations;
+
+    public enum Overflow
     {
-        Success,
-        Warning,
-        Error
+        [EnumInfo("initial")]
+        Initial,
+
+        [EnumInfo("visible")]
+        Visible,
+
+        [EnumInfo("hidden")]
+        Hidden,
+
+        [EnumInfo("scroll")]
+        Scroll,
+
+        [EnumInfo("auto")]
+        Auto
     }
 }

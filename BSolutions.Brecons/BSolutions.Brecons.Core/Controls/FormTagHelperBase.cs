@@ -24,6 +24,7 @@
 //-----------------------------------------------------------------------
 namespace BSolutions.Brecons.Core.Controls
 {
+    using BSolutions.Brecons.Core.Attributes.Controls;
     using BSolutions.Brecons.Core.Enumerations;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;

@@ -57,18 +57,18 @@ namespace BSolutions.Brecons.Core.Controls
         /// <summary>
         /// Gets or sets the identifier for the control.
         /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
         [CopyToOutput]
         public string Id { get; set; }
 
         /// <summary>
+        /// Gets or sets the name for the control.
+        /// </summary>
+        [CopyToOutput]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets the control output.
         /// </summary>
-        /// <value>
-        /// The output.
-        /// </value>
         [HtmlAttributeNotBound]
         public TagHelperOutput Output { get; set; }
 
@@ -82,6 +82,7 @@ namespace BSolutions.Brecons.Core.Controls
         /// Gets or sets the view context.
         /// </summary>
         [ViewContext]
+        [HtmlAttributeNotBound]
         public ViewContext ViewContext { get; set; }
 
         #endregion

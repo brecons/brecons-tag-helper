@@ -26,12 +26,34 @@ namespace BSolutions.Brecons.Core.Attributes
 {
     using System;
 
+    /// <summary>
+    /// Specifies the display name and an optinally description for a property.
+    /// </summary>
+    /// <seealso cref="System.Attribute" />
+    /// <seealso cref="BSolutions.Brecons.Core.Attributes.IBreconsDisplayAttribute" />
+    /// <remarks>
+    /// This attribute is used when an own localization logic is used in an application
+    /// and the DisplayAttribute of .NET it is usable.
+    /// </remarks>
     public class BreconsDisplayAttribute : Attribute, IBreconsDisplayAttribute
     {
         protected string _displayName;
         protected string _description;
 
+        /// <summary>
+        /// Gets the display name.
+        /// </summary>
+        /// <value>
+        /// The display name.
+        /// </value>
         public virtual string DisplayName { get { return this._displayName; } }
+
+        /// <summary>
+        /// Gets the description.
+        /// </summary>
+        /// <value>
+        /// The description.
+        /// </value>
         public virtual string Description { get { return this._description; } }
 
         /// <summary>
