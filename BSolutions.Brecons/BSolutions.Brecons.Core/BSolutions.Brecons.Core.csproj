@@ -15,7 +15,7 @@
     <Product>Brecons - Tag Helper Core Library</Product>
     <Description>The core library for Brecons Tag Helper - Components and Controls for ASP.NET Core.</Description>
     <RepositoryUrl>https://github.com/brecons/brecons-tag-helper</RepositoryUrl>
-    <PackageReleaseNotes>Initial release of the library.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added types for input addons</PackageReleaseNotes>
     <AssemblyVersion>2.1.2.0</AssemblyVersion>
     <FileVersion>2.1.2.0</FileVersion>
     <Version>2.1.2</Version>
