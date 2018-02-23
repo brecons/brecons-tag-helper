@@ -37,6 +37,7 @@ namespace BSolutions.Brecons.Core.Extensions
         /// Binds the property to the tag helper.
         /// </summary>
         /// <param name="tagHelper">The tag helper.</param>
+        /// <remarks>Handles the tag helper name, required indication and label / help texts.</remarks>
         public static void BindProperty(this FormTagHelperBase tagHelper, TagHelperContext context)
         {
             var modelExpression = tagHelper.GetModelExpression(context);
@@ -66,11 +67,23 @@ namespace BSolutions.Brecons.Core.Extensions
         }
 
         /// <summary>
+        /// Gets the property value of the to tag helper binded model.
+        /// </summary>
+        /// <param name="tagHelper">The tag helper.</param>
+        /// <param name="context">The tag helper context.</param>
+        /// <returns>Returns the property value of the to tag helper binded model.</returns>
+        public static object GetModelValue(this FormTagHelperBase tagHelper, TagHelperContext context)
+        {
+            var modelExpression = GetModelExpression(tagHelper, context);
+            return modelExpression.Model;
+        }
+
+        /// <summary>
         /// Handles the name of the control from the binded model.
         /// </summary>
         /// <param name="tagHelper">The tag helper.</param>
         /// <param name="modelExpression">The tag helper model expression.</param>
-        private static void HandleName(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
+        public static void HandleName(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
         {
             var name = modelExpression.Name;
             tagHelper.Name = tagHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
@@ -81,7 +94,7 @@ namespace BSolutions.Brecons.Core.Extensions
         /// </summary>
         /// <param name="tagHelper">The tag helper.</param>
         /// <param name="modelExpression">The tag helper model expression.</param>
-        private static void HandleRequired(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
+        public static void HandleRequired(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
         {
             if (modelExpression.Metadata != null)
             {
@@ -100,7 +113,7 @@ namespace BSolutions.Brecons.Core.Extensions
         /// </summary>
         /// <param name="tagHelper">The tag helper.</param>
         /// <param name="modelExpression">The tag helper model expression.</param>
-        private static void HandleInformation(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
+        public static void HandleInformation(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
         {
             if (modelExpression.Metadata != null)
             {
