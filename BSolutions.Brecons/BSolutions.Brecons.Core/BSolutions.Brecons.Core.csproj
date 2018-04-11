@@ -15,10 +15,11 @@
     <Product>Brecons - Tag Helper Core Library</Product>
     <Description>The core library for Brecons Tag Helper - Components and Controls for ASP.NET Core.</Description>
     <RepositoryUrl>https://github.com/brecons/brecons-tag-helper</RepositoryUrl>
-    <PackageReleaseNotes>- New Orientation enum type</PackageReleaseNotes>
-    <AssemblyVersion>2.1.4.0</AssemblyVersion>
-    <FileVersion>2.1.4.0</FileVersion>
-    <Version>2.1.4-alpha1</Version>
+    <PackageReleaseNotes>- New Orientation enum type
+- New MomentJS to DateTime Format Converation</PackageReleaseNotes>
+    <AssemblyVersion>2.1.4.2</AssemblyVersion>
+    <FileVersion>2.1.4.2</FileVersion>
+    <Version>2.1.4-alpha2</Version>
   </PropertyGroup>
 
   <ItemGroup>
