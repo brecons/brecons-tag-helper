@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MandatoryAttributeException.cs" company="Bremus Solutions">
+// <copyright file="MandatoryAttribute.cs" company="Bremus Solutions">
 //     Copyright (c) Bremus Solutions. All rights reserved.
 // </copyright>
 // <author>Timm Bremus</author>
@@ -22,27 +22,31 @@
 //      under the License.
 // </license>
 //-----------------------------------------------------------------------
-namespace BSolutions.Brecons.Core.Exceptions
+namespace BSolutions.Brecons.Core.Attributes.Controls
 {
+    using BSolutions.Brecons.Core.Exceptions;
+    using BSolutions.Brecons.Core.Extensions;
     using System;
+    using System.Linq;
 
-    public class MandatoryAttributeException : Exception
+    /// <summary>
+    /// Marks a tag helper Attribute as mandatory.
+    /// </summary>
+    /// <seealso cref="System.Attribute" />
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    public class MandatoryAttribute : Attribute
     {
-        public string Attribute { get; set; }
-
-        public Type TagHelper { get; set; }
-
-        public MandatoryAttributeException(string attribute)
-            : base($"The '{attribute}' attribute is mandatory and must be set.")
+        public static void CheckProperties(object target)
         {
-            this.Attribute = attribute;
-        }
+            foreach (var propertyInfo in target.GetType().GetProperties().Where(pi => pi.HasCustomAttribute<MandatoryAttribute>()))
+            {
+                var value = propertyInfo.GetValue(target);
 
-        public MandatoryAttributeException(string attribute, Type tagHelper)
-            : base($"The '{attribute}' attribute of the '{tagHelper.Name}' is mandatory and must be set.")
-        {
-            this.Attribute = attribute;
-            this.TagHelper = tagHelper;
+                if(value == null)
+                {
+                    throw new MandatoryAttributeException(propertyInfo.Name, target.GetType());
+                }
+            }
         }
     }
 }
