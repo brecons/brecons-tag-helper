@@ -21,7 +21,7 @@
 - New enum for Bootstrap 4 breakpoints</PackageReleaseNotes>
     <AssemblyVersion>2.1.4.0</AssemblyVersion>
     <FileVersion>2.1.4.0</FileVersion>
-    <Version>2.1.4-alpha8</Version>
+    <Version>2.1.4-alpha9</Version>
   </PropertyGroup>
 
   <ItemGroup>
