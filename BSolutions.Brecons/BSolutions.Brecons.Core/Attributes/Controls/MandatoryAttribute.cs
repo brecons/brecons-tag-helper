@@ -36,16 +36,28 @@ namespace BSolutions.Brecons.Core.Attributes.Controls
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class MandatoryAttribute : Attribute
     {
-        public static void CheckProperties(object target)
+        /// <summary>
+        /// Checks all properties of a tag helper.
+        /// </summary>
+        /// <param name="tagHelper">The tag helper.</param>
+        /// <exception cref="MandatoryAttributeException"></exception>
+        public static void CheckProperties(object tagHelper)
         {
-            foreach (var propertyInfo in target.GetType().GetProperties().Where(pi => pi.HasCustomAttribute<MandatoryAttribute>()))
+            foreach (var propertyInfo in tagHelper.GetType().GetProperties().Where(pi => pi.HasCustomAttribute<MandatoryAttribute>()))
             {
-                var value = propertyInfo.GetValue(target);
+                var value = propertyInfo.GetValue(tagHelper);
+                string htmlAttributeName = propertyInfo.GetHtmlAttributeName();
 
+                // String Type
+                if (propertyInfo.PropertyType == typeof(string) && string.IsNullOrEmpty((string)value))
+                {
+                    throw new MandatoryAttributeException(htmlAttributeName, tagHelper.GetType());
+                }
+
+                // Default Type
                 if(value == null)
                 {
-                    string htmlAttributeName = propertyInfo.GetHtmlAttributeName();
-                    throw new MandatoryAttributeException(htmlAttributeName, target.GetType());
+                    throw new MandatoryAttributeException(htmlAttributeName, tagHelper.GetType());
                 }
             }
         }
