@@ -44,7 +44,8 @@ namespace BSolutions.Brecons.Core.Attributes.Controls
 
                 if(value == null)
                 {
-                    throw new MandatoryAttributeException(propertyInfo.Name, target.GetType());
+                    string htmlAttributeName = propertyInfo.GetHtmlAttributeName();
+                    throw new MandatoryAttributeException(htmlAttributeName, target.GetType());
                 }
             }
         }

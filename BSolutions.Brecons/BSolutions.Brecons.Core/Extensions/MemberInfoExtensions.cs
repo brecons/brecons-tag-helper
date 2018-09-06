@@ -46,7 +46,10 @@ namespace BSolutions.Brecons.Core.Extensions
         {
             var htmlAttributeNameAttribute = property.GetCustomAttribute<HtmlAttributeNameAttribute>();
             if (htmlAttributeNameAttribute != null)
+            {
                 return htmlAttributeNameAttribute.DictionaryAttributePrefix + htmlAttributeNameAttribute.Name;
+            }
+
             return Regex.Replace(property.Name, "([A-Z])", "-$1").ToLower().Trim('-');
         }
     }
