@@ -19,9 +19,9 @@
 - New MomentJS to DateTime Format Converation
 - Remove localization mechanism
 - New enum for Bootstrap 4 breakpoints</PackageReleaseNotes>
-    <AssemblyVersion>2.1.4.0</AssemblyVersion>
-    <FileVersion>2.1.4.0</FileVersion>
-    <Version>2.1.4-beta3</Version>
+    <AssemblyVersion>2.1.5.0</AssemblyVersion>
+    <FileVersion>2.1.5.0</FileVersion>
+    <Version>2.1.5-alpha1</Version>
   </PropertyGroup>
 
   <ItemGroup>
