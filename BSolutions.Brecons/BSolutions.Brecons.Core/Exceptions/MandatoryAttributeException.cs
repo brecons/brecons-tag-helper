@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MemberInfoExtensions.cs" company="Bremus Solutions">
+// <copyright file="MandatoryAttributeException.cs" company="Bremus Solutions">
 //     Copyright (c) Bremus Solutions. All rights reserved.
 // </copyright>
 // <author>Timm Bremus</author>
@@ -22,35 +22,27 @@
 //      under the License.
 // </license>
 //-----------------------------------------------------------------------
-namespace BSolutions.Brecons.Core.Extensions
+namespace BSolutions.Brecons.Core.Exceptions
 {
-    using Microsoft.AspNetCore.Razor.TagHelpers;
     using System;
-    using System.Linq;
-    using System.Reflection;
-    using System.Text.RegularExpressions;
 
-    public static class MemberInfoExtensions
+    public class MandatoryAttributeException : Exception
     {
-        public static bool HasCustomAttribute<T>(this MemberInfo memberInfo)
+        public string Attribute { get; set; }
+
+        public Type TagHelper { get; set; }
+
+        public MandatoryAttributeException(string attribute)
+            : base($"The '{attribute}' attribute is mandatory and must be set.")
         {
-            return memberInfo.GetCustomAttributes(typeof(T), true).Any();
+            this.Attribute = attribute;
         }
 
-        public static bool HasCustomAttribute(this MemberInfo memberInfo, Type attributeType)
+        public MandatoryAttributeException(string attribute, Type tagHelper)
+            : base($"The '{attribute}' attribute of the '{tagHelper.Name}' is mandatory and must be set.")
         {
-            return memberInfo.GetCustomAttributes(attributeType, true).Any();
-        }
-
-        public static string GetHtmlAttributeName(this MemberInfo property)
-        {
-            var htmlAttributeNameAttribute = property.GetCustomAttribute<HtmlAttributeNameAttribute>();
-            if (htmlAttributeNameAttribute != null)
-            {
-                return htmlAttributeNameAttribute.DictionaryAttributePrefix + htmlAttributeNameAttribute.Name;
-            }
-
-            return Regex.Replace(property.Name, "([A-Z])", "-$1").ToLower().Trim('-');
+            this.Attribute = attribute;
+            this.TagHelper = tagHelper;
         }
     }
 }

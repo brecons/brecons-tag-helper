@@ -110,6 +110,7 @@ namespace BSolutions.Brecons.Core.Controls
             if (!this.DisableBootstrap)
             {
                 CopyToOutputAttribute.CopyPropertiesToOutput(this, output);
+                MandatoryAttribute.CheckProperties(this);
                 this.BasicRenderProcess(output);
                 this.RenderProcess(context, output);
                 this.RemoveMinimizableAttributes(output);
@@ -136,6 +137,7 @@ namespace BSolutions.Brecons.Core.Controls
             if (!this.DisableBootstrap)
             {
                 CopyToOutputAttribute.CopyPropertiesToOutput(this, output);
+                MandatoryAttribute.CheckProperties(this);
                 this.BasicRenderProcess(output);
                 await RenderProcessAsync(context, output);
                 this.RemoveMinimizableAttributes(output);
