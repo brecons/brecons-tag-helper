@@ -75,7 +75,7 @@ namespace BSolutions.Brecons.Core.Extensions
         public static object GetModelValue(this FormTagHelperBase tagHelper, TagHelperContext context)
         {
             var modelExpression = GetModelExpression(tagHelper, context);
-            return modelExpression.Model;
+            return modelExpression?.Model;
         }
 
         /// <summary>
