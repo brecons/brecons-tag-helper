@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard1.6;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
@@ -19,11 +19,17 @@
 - Enumeration for Table Border Style</PackageReleaseNotes>
     <AssemblyVersion>2.1.6.0</AssemblyVersion>
     <FileVersion>2.1.6.0</FileVersion>
-    <Version>2.1.6-alpha1</Version>
+    <Version>2.1.6</Version>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <DefineConstants Condition="'$(TargetFramework)' == 'netstandard1.6'">NETSTANDARD_1_6</DefineConstants>
+    <DefineConstants Condition="'$(TargetFramework)' != 'netstandard2.0'">NETSTANDARD_2_0</DefineConstants>
+  </PropertyGroup>
+  
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="1.1.8" Condition="'$(TargetFramework)' == 'netstandard1.6'" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.1.2" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
   </ItemGroup>
 
 </Project>

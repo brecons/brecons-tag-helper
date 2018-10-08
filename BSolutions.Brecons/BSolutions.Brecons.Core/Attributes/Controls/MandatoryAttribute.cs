@@ -28,6 +28,7 @@ namespace BSolutions.Brecons.Core.Attributes.Controls
     using BSolutions.Brecons.Core.Extensions;
     using System;
     using System.Linq;
+    using System.Reflection;
 
     /// <summary>
     /// Marks a tag helper Attribute as mandatory.
