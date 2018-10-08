@@ -24,7 +24,7 @@
 
   <PropertyGroup>
     <DefineConstants Condition="'$(TargetFramework)' == 'netstandard1.6'">NETSTANDARD_1_6</DefineConstants>
-    <DefineConstants Condition="'$(TargetFramework)' != 'netstandard2.0'">NETSTANDARD_2_0</DefineConstants>
+    <DefineConstants Condition="'$(TargetFramework)' == 'netstandard2.0'">NETSTANDARD_2_0</DefineConstants>
   </PropertyGroup>
   
   <ItemGroup>
