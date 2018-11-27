@@ -24,113 +24,133 @@
 //-----------------------------------------------------------------------
 namespace BSolutions.Brecons.Core.Extensions
 {
-    using System.Text.RegularExpressions;
-
+    /// <summary>
+    /// Extensions for DateTime Handling.
+    /// </summary>
     public static class DateTimeExtensions
     {
         /// <summary>
-        /// Converts a bootstrap date picker format to c# date time format.
+        /// Converts a .NET date format string into a jQuery format string.
         /// </summary>
-        /// <param name="format">The bootstrap date picker format.</param>
-        /// <returns>Returns a c# date time format.</returns>
-        public static string ConvertDateTojQuery(this string format)
+        /// <param name="format">The .NET date format string.</param>
+        /// <returns>Returns a jQuery date format string.</returns>
+        public static string ConvertNetFormatTojQuery(this string format)
         {
             /*
-             *  Date used in this comment : 5th - Nov - 2009 (Thursday)
-             *
-             *  .NET    JQueryUI        Output      Comment
-             *  --------------------------------------------------------------
-             *  d       d               5           day of month(No leading zero)
-             *  dd      dd              05          day of month(two digit)
-             *  ddd     D               Thu         day short name
-             *  dddd    DD              Thursday    day long name
-             *  M       m               11          month of year(No leading zero)
-             *  MM      mm              11          month of year(two digit)
-             *  MMM     M               Nov         month name short
-             *  MMMM    MM              November    month name long.
-             *  yy      y               09          Year(two digit)
-             *  yyyy    yy              2009        Year(four digit)             *
+             *  .NET    JQueryUI        Output
+             *  ---------------------------------
+             *  d       d               1 ... 31
+             *  dd      dd              01 ... 31
+             *  ddd     D               Thu
+             *  dddd    DD              Thursday
+             *  M       m               1 ... 12
+             *  MM      mm              01 ... 12
+             *  MMM     M               Nov
+             *  MMMM    MM              November
+             *  yy      yy              09
+             *  yyyy    yyyy            2009
              */
 
-            string currentFormat = format;
+            // Day
+            format = format.Replace("dddd", "DD");
+            format = format.Replace("ddd", "D");
 
-            // Convert the date
-            currentFormat = currentFormat.Replace("dddd", "DD");
-            currentFormat = currentFormat.Replace("ddd", "D");
-
-            // Convert month
-            if (currentFormat.Contains("MMMM"))
+            // Month
+            if (format.Contains("MMMM"))
             {
-                currentFormat = currentFormat.Replace("MMMM", "MM");
+                format = format.Replace("MMMM", "MM");
             }
-            else if (currentFormat.Contains("MMM"))
+            else if (format.Contains("MMM"))
             {
-                currentFormat = currentFormat.Replace("MMM", "M");
+                format = format.Replace("MMM", "M");
             }
-            else if (currentFormat.Contains("MM"))
+            else if (format.Contains("MM"))
             {
-                currentFormat = currentFormat.Replace("MM", "mm");
+                format = format.Replace("MM", "mm");
             }
             else
             {
-                currentFormat = currentFormat.Replace("M", "m");
-            }
-
-            return currentFormat;
-        }
-
-        /// <summary>
-        /// Converts the day format.
-        /// </summary>
-        /// <param name="format">The format.</param>
-        /// <returns>Returns a bootstrap date picker day format.</returns>
-        private static string ConvertDayFormat(string format)
-        {
-            // DD = Monday
-            if (Regex.Matches(format, "D{2,}").Count > 0)
-            {
-                return Regex.Replace(format, "D{2,}", "dddd");
-            }
-
-            // D = Mon
-            if (Regex.Matches(format, "D{1}").Count > 0)
-            {
-                return Regex.Replace(format, "D{1}", "ddd");
+                format = format.Replace("M", "m");
             }
 
             return format;
         }
 
         /// <summary>
-        /// Converts the month format.
+        /// Converts a .NET date format string into a MomentJs format string.
         /// </summary>
-        /// <param name="format">The format.</param>
-        /// <returns>Returns a bootstrap date picker month format.</returns>
-        private static string ConvertMonthFormat(string format)
+        /// <param name="format">The .NET date format string.</param>
+        /// <returns>Returns a MomentJs date format string.</returns>
+        public static string ConvertNetFormatToMomentJs(this string format)
         {
-            // MM = December
-            if (Regex.Matches(format, "M{2,}").Count > 0)
-            {
-                return Regex.Replace(format, "M{2,}", "MMMM");
-            }
+            /*
+             *  .NET    MomentJS        Output
+             *  ---------------------------------
+             *  d       D               1 ... 31
+             *  dd      DD              01 ... 31
+             *  ddd     ddd             Thu
+             *  dddd    dddd            Thursday
+             *  M       M               1 ... 12
+             *  MM      MM              01 ... 11
+             *  MMM     MMM             Nov
+             *  MMMM    MMMM            November
+             *  yy      YY              09
+             *  yyyy    YYYY            2009
+             *  h       h               1 ... 12
+             *  hh      hh              01 ... 12
+             *  H       H               1 ... 24
+             *  HH      HH              01 ... 24
+             *  m       m               0 ... 59
+             *  mm      mm              00 ... 59
+             */
 
-            // M = Dec
-            if (Regex.Matches(format, "M{1}").Count > 0)
-            {
-                return Regex.Replace(format, "M{1}", "MMM");
-            }
+            // Day
+            format = format.Replace("dd", "DD");
+            format = format.Replace("d", "D");
 
-            // mm = 07
-            if (Regex.Matches(format, "m{2,}").Count > 0)
-            {
-                return Regex.Replace(format, "m{2,}", "MM");
-            }
 
-            // m = 7
-            if (Regex.Matches(format, "m{1}").Count > 0)
-            {
-                return Regex.Replace(format, "m{1}", "M");
-            }
+            // Years
+            format = format.Replace("yyyy", "YYYY");
+            format = format.Replace("yy", "YY");
+
+            return format;
+        }
+
+        /// <summary>
+        /// Converts a MomentJs date format string into a .NET date format string.
+        /// </summary>
+        /// <param name="format">The MomentJs date format string.</param>
+        /// <returns>Returns a .NET date format string.</returns>
+        public static string ConvertMomentJsFormatToNet(this string format)
+        {
+            /*
+             *  .NET    MomentJS        Output
+             *  ----------------------------------
+             *  d       D               1 ... 31
+             *  dd      DD              01 ... 31
+             *  ddd     ddd             Thu
+             *  dddd    dddd            Thursday
+             *  M       M               1 ... 12
+             *  MM      MM              01 ... 11
+             *  MMM     MMM             Nov
+             *  MMMM    MMMM            November
+             *  yy      YY              09
+             *  yyyy    YYYY            2009
+             *  h       h               1 ... 12
+             *  hh      hh              01 ... 12
+             *  H       H               1 ... 24
+             *  HH      HH              01 ... 24
+             *  m       m               0 ... 59
+             *  mm      mm              00 ... 59
+             */
+
+            // Day
+            format = format.Replace("DD", "dd");
+            format = format.Replace("D", "d");
+
+            // Year
+            format = format.Replace("YYYY", "yyyy");
+            format = format.Replace("YY", "yy");
 
             return format;
         }
