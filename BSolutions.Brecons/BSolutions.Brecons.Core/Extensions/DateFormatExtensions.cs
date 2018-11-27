@@ -27,7 +27,7 @@ namespace BSolutions.Brecons.Core.Extensions
     /// <summary>
     /// Extensions for DateTime Handling.
     /// </summary>
-    public static class DateTimeExtensions
+    public static class DateFormatExtensions
     {
         /// <summary>
         /// Converts a .NET date format string into a jQuery format string.
