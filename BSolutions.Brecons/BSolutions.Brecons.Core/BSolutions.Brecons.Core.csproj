@@ -15,21 +15,21 @@
     <Product>Brecons - Tag Helper Core Library</Product>
     <Description>The core library for Brecons Tag Helper - Components and Controls for ASP.NET Core.</Description>
     <RepositoryUrl>https://github.com/brecons/brecons-tag-helper</RepositoryUrl>
-    <PackageReleaseNotes>- Mandatory Exception and Mandatory Attribute for Tag Helper Properties
-- Enumeration for Table Border Style</PackageReleaseNotes>
-    <AssemblyVersion>2.1.6.0</AssemblyVersion>
-    <FileVersion>2.1.6.0</FileVersion>
-    <Version>2.1.6</Version>
+    <PackageReleaseNotes>- Refactoring of DateTime extension methods
+- MandatoryAttribute also checks collections</PackageReleaseNotes>
+    <AssemblyVersion>2.1.7.0</AssemblyVersion>
+    <FileVersion>2.1.7.0</FileVersion>
+    <Version>2.1.7</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <DefineConstants Condition="'$(TargetFramework)' == 'netstandard1.6'">NETSTANDARD_1_6</DefineConstants>
-    <DefineConstants Condition="'$(TargetFramework)' != 'netstandard2.0'">NETSTANDARD_2_0</DefineConstants>
+    <DefineConstants Condition="'$(TargetFramework)' == 'netstandard2.0'">NETSTANDARD_2_0</DefineConstants>
   </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="1.1.8" Condition="'$(TargetFramework)' == 'netstandard1.6'" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.1.2" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.2.0" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
   </ItemGroup>
 
 </Project>

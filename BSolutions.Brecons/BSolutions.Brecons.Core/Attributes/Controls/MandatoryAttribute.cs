@@ -27,6 +27,7 @@ namespace BSolutions.Brecons.Core.Attributes.Controls
     using BSolutions.Brecons.Core.Exceptions;
     using BSolutions.Brecons.Core.Extensions;
     using System;
+    using System.Collections;
     using System.Linq;
     using System.Reflection;
 
@@ -55,8 +56,14 @@ namespace BSolutions.Brecons.Core.Attributes.Controls
                     throw new MandatoryAttributeException(htmlAttributeName, tagHelper.GetType());
                 }
 
+                // Enumerable Type
+                if (typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType) && !((IEnumerable)value).GetEnumerator().MoveNext())
+                {
+                    throw new MandatoryAttributeException(htmlAttributeName, tagHelper.GetType());
+                }
+
                 // Default Type
-                if(value == null)
+                if (value == null)
                 {
                     throw new MandatoryAttributeException(htmlAttributeName, tagHelper.GetType());
                 }
