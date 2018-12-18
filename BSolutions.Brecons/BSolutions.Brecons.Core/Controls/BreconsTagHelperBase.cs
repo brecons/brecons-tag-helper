@@ -179,12 +179,12 @@ namespace BSolutions.Brecons.Core.Controls
             }
             else
             {
-                GenerateIdAttribute generaterIdAttribute = this.GetType().GetTypeInfo().GetCustomAttributes<GenerateIdAttribute>(true).FirstOrDefault();
-                if (generaterIdAttribute != null)
+                GenerateIdAttribute generateIdAttribute = this.GetType().GetTypeInfo().GetCustomAttributes<GenerateIdAttribute>(true).FirstOrDefault();
+                if (generateIdAttribute != null)
                 {
-                    this.Id = generaterIdAttribute.Id;
+                    this.Id = generateIdAttribute.Id;
 
-                    if(generaterIdAttribute.RenderIdAttribute)
+                    if(generateIdAttribute.RenderIdAttribute)
                     {
                         output.MergeAttribute("id", this.Id);
                     }

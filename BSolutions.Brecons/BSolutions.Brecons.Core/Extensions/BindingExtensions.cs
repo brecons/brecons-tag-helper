@@ -24,6 +24,7 @@
 //-----------------------------------------------------------------------
 namespace BSolutions.Brecons.Core.Extensions
 {
+    using BSolutions.Brecons.Core.Attributes.Controls;
     using BSolutions.Brecons.Core.Controls;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -44,8 +45,11 @@ namespace BSolutions.Brecons.Core.Extensions
 
             if (modelExpression != null)
             {
-                // Id and Name
-                tagHelper.HandleIdAndName(modelExpression);
+                // Id
+                tagHelper.HandleId(modelExpression);
+
+                // Name
+                tagHelper.HandleName(modelExpression);
 
                 // Required
                 tagHelper.HandleRequired(modelExpression);
@@ -79,18 +83,30 @@ namespace BSolutions.Brecons.Core.Extensions
         }
 
         /// <summary>
-        /// Handles the id and name of the control from the binded model.
+        /// Handles the id of the control from the binded model.
         /// </summary>
         /// <param name="tagHelper">The tag helper.</param>
         /// <param name="modelExpression">The tag helper model expression.</param>
-        public static void HandleIdAndName(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
+        public static void HandleId(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
+        {
+            GenerateIdAttribute generateIdAttribute = tagHelper.GetType().GetTypeInfo().GetCustomAttributes<GenerateIdAttribute>(true).FirstOrDefault();
+
+            // Bind id only when the id attribute of the element is not set
+            if (string.IsNullOrEmpty(tagHelper.Id) || (generateIdAttribute != null && generateIdAttribute.Id == tagHelper.Id))
+            {
+                var name = modelExpression.Name;
+                tagHelper.Id = tagHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
+            }
+        }
+
+        /// <summary>
+        /// Handles the name of the control from the binded model.
+        /// </summary>
+        /// <param name="tagHelper">The tag helper.</param>
+        /// <param name="modelExpression">The tag helper model expression.</param>
+        public static void HandleName(this FormTagHelperBase tagHelper, ModelExpression modelExpression)
         {
             var name = modelExpression.Name;
-
-            // Id
-            tagHelper.Id = tagHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
-
-            // Name
             tagHelper.Name = tagHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
         }
 
