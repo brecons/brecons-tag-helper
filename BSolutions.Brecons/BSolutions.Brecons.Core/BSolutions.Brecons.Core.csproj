@@ -15,10 +15,10 @@
     <Product>Brecons - Tag Helper Core Library</Product>
     <Description>The core library for Brecons Tag Helper - Components and Controls for ASP.NET Core.</Description>
     <RepositoryUrl>https://github.com/brecons/brecons-tag-helper</RepositoryUrl>
-    <PackageReleaseNotes>- Refactoring of DateTime extension methods</PackageReleaseNotes>
-    <AssemblyVersion>2.1.7.0</AssemblyVersion>
-    <FileVersion>2.1.7.0</FileVersion>
-    <Version>2.1.7-beta2</Version>
+    <PackageReleaseNotes>- New binding logic for id attribute of elements</PackageReleaseNotes>
+    <AssemblyVersion>2.1.8.0</AssemblyVersion>
+    <FileVersion>2.1.8.0</FileVersion>
+    <Version>2.1.8-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
