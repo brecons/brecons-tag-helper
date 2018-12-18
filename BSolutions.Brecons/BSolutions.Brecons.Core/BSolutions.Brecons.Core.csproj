@@ -18,7 +18,7 @@
     <PackageReleaseNotes>- New binding logic for id attribute of elements</PackageReleaseNotes>
     <AssemblyVersion>2.1.8.0</AssemblyVersion>
     <FileVersion>2.1.8.0</FileVersion>
-    <Version>2.1.8-beta3</Version>
+    <Version>2.1.8</Version>
   </PropertyGroup>
 
   <PropertyGroup>

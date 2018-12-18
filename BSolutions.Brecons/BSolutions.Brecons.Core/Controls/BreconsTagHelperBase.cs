@@ -55,6 +55,12 @@ namespace BSolutions.Brecons.Core.Controls
         public bool DisableBootstrap { get; set; }
 
         /// <summary>
+        /// Gets or sets the generated identifier for the control.
+        /// </summary>
+        [HtmlAttributeNotBound]
+        public string GeneratedId { get; set; }
+
+        /// <summary>
         /// Gets or sets the identifier for the control.
         /// </summary>
         [CopyToOutput]
@@ -111,8 +117,9 @@ namespace BSolutions.Brecons.Core.Controls
             {
                 CopyToOutputAttribute.CopyPropertiesToOutput(this, output);
                 MandatoryAttribute.CheckProperties(this);
+                GenerateIdAttribute.CopyIdentifier(this);
                 this.RenderProcess(context, output);
-                this.RenderElementId(output);
+                GenerateIdAttribute.RenderIdentifier(this, output);
                 this.RemoveMinimizableAttributes(output);
             }
         }
@@ -138,8 +145,9 @@ namespace BSolutions.Brecons.Core.Controls
             {
                 CopyToOutputAttribute.CopyPropertiesToOutput(this, output);
                 MandatoryAttribute.CheckProperties(this);
+                GenerateIdAttribute.CopyIdentifier(this);
                 await RenderProcessAsync(context, output);
-                this.RenderElementId(output);
+                GenerateIdAttribute.RenderIdentifier(this, output);
                 this.RemoveMinimizableAttributes(output);
             }
         }
@@ -164,33 +172,6 @@ namespace BSolutions.Brecons.Core.Controls
         protected virtual async Task RenderProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             this.RenderProcess(context, output);
-        }
-
-        /// <summary>
-        /// Renders the id attribute for the element.
-        /// </summary>
-        /// <param name="output">A stateful HTML element used to generate an HTML tag.</param>
-        private void RenderElementId(TagHelperOutput output)
-        {
-            // Render control id attribute
-            if (!string.IsNullOrEmpty(this.Id))
-            {
-                output.MergeAttribute("id", this.Id);
-            }
-            else
-            {
-                GenerateIdAttribute generateIdAttribute = this.GetType().GetTypeInfo().GetCustomAttributes<GenerateIdAttribute>(true).FirstOrDefault();
-                if (generateIdAttribute != null)
-                {
-                    this.Id = generateIdAttribute.Id;
-
-                    if(generateIdAttribute.RenderIdAttribute)
-                    {
-                        output.MergeAttribute("id", this.Id);
-                    }
-                    
-                }
-            }
         }
 
         private void RemoveMinimizableAttributes(TagHelperOutput output)

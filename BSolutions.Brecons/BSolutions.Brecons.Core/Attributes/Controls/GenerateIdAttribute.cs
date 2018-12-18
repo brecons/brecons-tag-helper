@@ -24,7 +24,12 @@
 //-----------------------------------------------------------------------
 namespace BSolutions.Brecons.Core.Attributes.Controls
 {
+    using BSolutions.Brecons.Core.Controls;
+    using BSolutions.Brecons.Core.Extensions;
+    using Microsoft.AspNetCore.Razor.TagHelpers;
     using System;
+    using System.Linq;
+    using System.Reflection;
 
     /// <summary>
     /// Can generate a random Id (Random Guid) if the decoraded string property is null or empty
@@ -43,6 +48,33 @@ namespace BSolutions.Brecons.Core.Attributes.Controls
         {
             this.Prefix = prefix;
             this.RenderIdAttribute = renderIdAttribute;
+        }
+
+        /// <summary>
+        /// Copies the generated identifier to the id property of tag helper.
+        /// </summary>
+        /// <param name="tagHelper">The tag helper.</param>
+        public static void CopyIdentifier(BreconsTagHelperBase tagHelper)
+        {
+            GenerateIdAttribute generateIdAttribute = tagHelper.GetType().GetTypeInfo().GetCustomAttributes<GenerateIdAttribute>(true).FirstOrDefault();
+            if (string.IsNullOrEmpty(tagHelper.Id) && generateIdAttribute != null && generateIdAttribute.RenderIdAttribute)
+            {
+                tagHelper.GeneratedId = generateIdAttribute.Id;
+                tagHelper.Id = tagHelper.GeneratedId;
+            }
+        }
+
+        /// <summary>
+        /// Renders the id attribute of the element with the identifier value.
+        /// </summary>
+        /// <param name="tagHelper">The tag helper.</param>
+        /// <param name="output">A stateful HTML element used to generate an HTML tag.</param>
+        public static void RenderIdentifier(BreconsTagHelperBase tagHelper, TagHelperOutput output)
+        {
+            if (!string.IsNullOrEmpty(tagHelper.Id))
+            {
+                output.MergeAttribute("id", tagHelper.Id);
+            }
         }
     }
 }

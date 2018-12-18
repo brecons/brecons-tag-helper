@@ -92,7 +92,7 @@ namespace BSolutions.Brecons.Core.Extensions
             GenerateIdAttribute generateIdAttribute = tagHelper.GetType().GetTypeInfo().GetCustomAttributes<GenerateIdAttribute>(true).FirstOrDefault();
 
             // Bind id only when the id attribute of the element is not set
-            if (string.IsNullOrEmpty(tagHelper.Id) || (generateIdAttribute != null && generateIdAttribute.Id == tagHelper.Id))
+            if (string.IsNullOrEmpty(tagHelper.Id) || (generateIdAttribute != null && tagHelper.GeneratedId == tagHelper.Id))
             {
                 var name = modelExpression.Name;
                 tagHelper.Id = tagHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
