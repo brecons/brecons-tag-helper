@@ -111,8 +111,8 @@ namespace BSolutions.Brecons.Core.Controls
             {
                 CopyToOutputAttribute.CopyPropertiesToOutput(this, output);
                 MandatoryAttribute.CheckProperties(this);
-                this.BasicRenderProcess(output);
                 this.RenderProcess(context, output);
+                this.RenderElementId(output);
                 this.RemoveMinimizableAttributes(output);
             }
         }
@@ -138,8 +138,8 @@ namespace BSolutions.Brecons.Core.Controls
             {
                 CopyToOutputAttribute.CopyPropertiesToOutput(this, output);
                 MandatoryAttribute.CheckProperties(this);
-                this.BasicRenderProcess(output);
                 await RenderProcessAsync(context, output);
+                this.RenderElementId(output);
                 this.RemoveMinimizableAttributes(output);
             }
         }
@@ -167,15 +167,15 @@ namespace BSolutions.Brecons.Core.Controls
         }
 
         /// <summary>
-        /// Rendering basics for each metronic control.
+        /// Renders the id attribute for the element.
         /// </summary>
         /// <param name="output">A stateful HTML element used to generate an HTML tag.</param>
-        private void BasicRenderProcess(TagHelperOutput output)
+        private void RenderElementId(TagHelperOutput output)
         {
             // Render control id attribute
             if (!string.IsNullOrEmpty(this.Id))
             {
-                output.Attributes.Add("id", this.Id);
+                output.MergeAttribute("id", this.Id);
             }
             else
             {
@@ -186,7 +186,7 @@ namespace BSolutions.Brecons.Core.Controls
 
                     if(generaterIdAttribute.RenderIdAttribute)
                     {
-                        output.Attributes.Add("id", this.Id);
+                        output.MergeAttribute("id", this.Id);
                     }
                     
                 }
