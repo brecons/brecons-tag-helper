@@ -55,7 +55,7 @@ namespace BSolutions.Brecons.Core.Extensions
         {
             if (tagHelper.For != null && tagHelper.ViewContext.HttpContext.Request.Method == "POST")
             {
-                return tagHelper.ViewContext.ViewData.ModelState.GetFieldValidationState(tagHelper.For.Metadata.PropertyName) == ModelValidationState.Valid;
+                return tagHelper.ViewContext.ViewData.ModelState.GetFieldValidationState(tagHelper.For.Name) != ModelValidationState.Invalid;
             }
 
             return true;
