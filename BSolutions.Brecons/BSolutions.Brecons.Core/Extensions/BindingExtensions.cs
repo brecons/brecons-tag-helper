@@ -98,7 +98,7 @@ namespace BSolutions.Brecons.Core.Extensions
         {
             if (modelExpression.Metadata != null)
             {
-                var property = modelExpression.Metadata.ContainerType.GetProperty(modelExpression.Metadata.PropertyName);
+                var property = modelExpression.Metadata.ContainerType.GetPublicProperty(modelExpression.Metadata.PropertyName);
 
                 // RequiredAttribute
                 if (property.IsDefined(typeof(RequiredAttribute)))
@@ -118,7 +118,7 @@ namespace BSolutions.Brecons.Core.Extensions
             if (modelExpression.Metadata != null)
             {
                 // Localized Property Info
-                var pi = modelExpression.Metadata.ContainerType.GetProperty(modelExpression.Metadata.PropertyName).GetLocalization();
+                var pi = modelExpression.Metadata.ContainerType.GetPublicProperty(modelExpression.Metadata.PropertyName).GetLocalization();
 
                 if (pi != null)
                 {
